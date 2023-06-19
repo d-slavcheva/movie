@@ -7187,7 +7187,7 @@ const Hu = (e) => {
 function Dd() {
 	const [e, n] = qe.useState([]),
 		[t, r] = qe.useState([]),
-		[l, o] = qe.useState([]),
+		[l, o] = qe.useState(''),
 		i = async (v) => {
 			if (v == '') return n([]);
 			const m = `https://www.omdbapi.com/?s=${v}&apikey=a6164345`,
@@ -7198,14 +7198,13 @@ function Dd() {
 		i(l);
 	}, [l]),
 		qe.useEffect(() => {
-			const v = JSON.parse(localStorage.getItem('react-movie-app-favourites'));
+			const v = JSON.parse(localStorage.getItem('react-movie-app-favourites')) || [];
 			r(v);
 		}, []);
 	const u = (v) => {
 			localStorage.setItem('react-movie-app-favourites', JSON.stringify(v));
 		},
 		s = (v) => {
-			if (t === null) return r([]);
 			const m = [...t, v];
 			r(m), u(m);
 		},
@@ -7220,7 +7219,7 @@ function Dd() {
 				className: 'container',
 				children: z.jsxs('div', {
 					className: 'row align-items-center my-5 justify-content-between',
-					children: [z.jsx(Wu, { heading: 'Movies' }), z.jsx(Md, { searchValue: l, setSearchValue: o })],
+					children: [z.jsx(Wu, { heading: 'Movies' }), z.jsx(Md, { searchValue: l, setSearchValue: o }), z.jsx('p', { children: 'Find your favoutite movie' })],
 				}),
 			}),
 			z.jsx('div', {
